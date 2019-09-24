@@ -148,6 +148,10 @@ def run_A(addr):
         line = raw_input('[0x%04x] ' % prompt_addr).strip()
         if line == '':
             break
+        elif re.match("\\s*#", line) is not None:
+            # Comment
+            asm += line + "\n"
+            continue
         elif re.match("\\w+:$", line) is not None:
             # ASM label only
             asm += line + "\n"
